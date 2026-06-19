@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tải UNI BOM System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  :root{
+    --primary:#3C3489;
+    --secondary:#185FA5;
+    --gradient: linear-gradient(120deg, #3C3489 0%, #185FA5 100%);
+    --text-1:#111827;
+    --text-2:#6b7280;
+    --text-3:#9ca3af;
+    --border:#e5e7eb;
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --success:#3B6D11;
+    --success-bg:#EAF3DE;
+    --warn:#854F0B;
+    --warn-bg:#FAEEDA;
+    --radius-lg:16px;
+    --radius-md:10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI Variable Text','Segoe UI', Inter, Tahoma, sans-serif;
+    background:var(--bg);
+    color:var(--text-1);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── Top bar ───────────────────────────────────── */
+  .topbar{
+    display:flex; align-items:center; gap:10px;
+    padding:18px 32px;
+  }
+  .topbar .mark{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--gradient);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:800; font-size:14px;
+    letter-spacing:.5px;
+  }
+  .topbar .name{ font-weight:800; font-size:15px; }
+  .topbar .name span{ display:block; font-weight:500; font-size:11.5px; color:var(--text-2); margin-top:1px;}
+
+  /* ── Hero ──────────────────────────────────────── */
+  .hero{
+    position:relative;
+    background:var(--gradient);
+    color:#fff;
+    padding:64px 24px 96px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(480px 280px at 12% 10%, rgba(255,255,255,.10), transparent 60%),
+      radial-gradient(520px 320px at 88% 100%, rgba(255,255,255,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; max-width:640px; margin:0 auto; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; letter-spacing:.4px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.22);
+    padding:5px 12px; border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:34px; font-weight:800; margin:0 0 12px;
+    line-height:1.25;
+  }
+  .hero p{
+    font-size:15px; color:rgba(255,255,255,.86);
+    margin:0 0 30px; line-height:1.6;
+  }
+  .download-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--primary);
+    font-weight:800; font-size:15.5px;
+    padding:15px 30px; border-radius:12px;
+    text-decoration:none;
+    box-shadow:0 14px 34px rgba(0,0,0,.18);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .download-btn:hover{ transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.22); }
+  .download-btn i{ font-size:20px; }
+  .meta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:18px;
+    margin-top:18px; font-size:12.5px; color:rgba(255,255,255,.78);
+  }
+  .meta-row b{ color:#fff; font-weight:700;}
+  .meta-row .dot{ opacity:.5; }
+
+  /* ── Card sections ─────────────────────────────── */
+  .wrap{ max-width:760px; margin:-56px auto 60px; padding:0 20px; position:relative; }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    margin-bottom:18px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04);
+  }
+  .card h2{
+    display:flex; align-items:center; gap:9px;
+    font-size:15px; font-weight:800; margin:0 0 18px;
+  }
+  .card h2 i{ font-size:18px; color:var(--primary); }
+
+  /* steps */
+  .steps{ display:flex; flex-direction:column; gap:0; }
+  .step{
+    display:flex; gap:16px; padding:14px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .step:last-child{ border-bottom:none; padding-bottom:0; }
+  .step:first-child{ padding-top:0; }
+  .step-num{
+    flex:none; width:30px; height:30px; border-radius:9px;
+    background:#EEEDFE; color:var(--primary);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+  .step-body b{ display:block; font-size:13.5px; margin-bottom:3px; }
+  .step-body span{ font-size:12.5px; color:var(--text-2); line-height:1.55; }
+
+  /* smartscreen note */
+  .note{
+    display:flex; gap:12px;
+    background:var(--warn-bg); border:1px solid #f3e0bb;
+    border-radius:var(--radius-md);
+    padding:14px 16px;
+    margin-top:6px;
+  }
+  .note i{ color:var(--warn); font-size:18px; flex:none; margin-top:1px; }
+  .note b{ display:block; font-size:13px; color:#5c3a08; margin-bottom:3px; }
+  .note span{ font-size:12.5px; color:#6b4a12; line-height:1.6; }
+
+  /* requirements */
+  .reqs{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .req{
+    border:1px solid var(--border); border-radius:var(--radius-md);
+    padding:14px; text-align:center;
+  }
+  .req i{ font-size:20px; color:var(--secondary); margin-bottom:8px; display:block; }
+  .req b{ display:block; font-size:12.5px; }
+  .req span{ font-size:11.5px; color:var(--text-2); }
+
+  /* changelog */
+  .changelog-item{ display:flex; gap:10px; padding:8px 0; font-size:12.5px; color:var(--text-2); }
+  .changelog-item i{ color:var(--success); font-size:14px; margin-top:2px; flex:none; }
+
+  /* footer */
+  .footer{
+    text-align:center; padding:0 20px 50px;
+    font-size:12px; color:var(--text-3);
+  }
+  .footer a{ color:var(--secondary); text-decoration:none; font-weight:600; }
+
+  @media (max-width:560px){
+    .hero{ padding:48px 18px 80px; }
+    .hero h1{ font-size:26px; }
+    .reqs{ grid-template-columns:1fr; }
+    .wrap{ margin-top:-40px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="mark">U</div>
+    <div class="name">UNI BOM System<span>Nội bộ công ty</span></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow"><i class="ti ti-shield-check"></i> Bản cài đặt chính thức</span>
+      <h1>Tải ứng dụng UNI BOM System</h1>
+      <p>Ứng dụng quản lý BOM, công tác phí, chấm công nội bộ — cài một lần, dùng trên máy tính công ty.</p>
+
+      <a id="downloadBtn" class="download-btn" href="#" download>
+        <i class="ti ti-download"></i>
+        <span>Tải về cho Windows</span>
+      </a>
+
+      <div class="meta-row">
+        <span>Phiên bản <b id="metaVersion">1.0.0</b></span>
+        <span class="dot">•</span>
+        <span>Dung lượng <b id="metaSize">—</b></span>
+        <span class="dot">•</span>
+        <span>Cập nhật <b id="metaDate">—</b></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+
+    <div class="card">
+      <h2><i class="ti ti-list-numbers"></i> Hướng dẫn cài đặt</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <b>Tải file cài đặt</b>
+            <span>Bấm nút "Tải về cho Windows" phía trên, chọn nơi lưu file <code>.exe</code>.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <b>Chạy file vừa tải</b>
+            <span>Nhấp đúp vào file cài đặt, làm theo hướng dẫn trên màn hình. Quá trình cài mất khoảng 1 phút.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <b>Đăng nhập</b>
+            <span>Mở ứng dụng từ Desktop, đăng nhập bằng tài khoản công ty được IT/Quản trị viên cấp.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <i class="ti ti-alert-triangle"></i>
+        <div>
+          <b>Windows cảnh báo "Unknown publisher"?</b>
+          <span>Đây là cảnh báo bình thường vì ứng dụng nội bộ chưa đăng ký chứng chỉ số. Bấm <b>"More info"</b> (Thông tin thêm) rồi chọn <b>"Run anyway"</b> (Vẫn chạy) để tiếp tục cài đặt.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="ti ti-device-desktop"></i> Yêu cầu hệ thống</h2>
+      <div class="reqs">
+        <div class="req">
+          <i class="ti ti-brand-windows"></i>
+          <b>Windows 10/11</b>
+          <span>Bản 64-bit</span>
+        </div>
+        <div class="req">
+          <i class="ti ti-cpu"></i>
+          <b>4GB RAM</b>
+          <span>Tối thiểu</span>
+        </div>
+        <div class="req">
+          <i class="ti ti-wifi"></i>
+          <b>Kết nối mạng</b>
+          <span>Để đồng bộ dữ liệu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="ti ti-sparkles"></i> Có gì mới</h2>
+      <div id="changelogList">
+        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Quản lý công tác phí: tách khoản chi theo từng ngày, hỗ trợ nhiều loại chi phí.</span></div>
+        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Xuất Excel báo cáo công tác phí theo cấu trúc khoản chi mới.</span></div>
+        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Cải thiện giao diện trang Quản lý công tác phí.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Gặp sự cố khi cài đặt? Liên hệ <a href="mailto:it@congty.com">it@congty.com</a> để được hỗ trợ.
+  </div>
+
+<script>
+  // ============================================================
+  // CẤU HÌNH — chỉnh các giá trị bên dưới mỗi khi ra bản mới
+  // ============================================================
+  const CONFIG = {
+    downloadUrl: "https://example.com/downloads/UNI-BOM-System-Setup-1.0.0.exe", // <-- thay link tải thật vào đây
+    version: "1.0.0",
+    sizeMB: "92 MB",
+    releaseDate: "19/06/2026",
+  }
+  // ============================================================
+
+  document.getElementById('downloadBtn').href = CONFIG.downloadUrl
+  document.getElementById('metaVersion').textContent = CONFIG.version
+  document.getElementById('metaSize').textContent = CONFIG.sizeMB
+  document.getElementById('metaDate').textContent = CONFIG.releaseDate
+</script>
+
+</body>
+</html>
