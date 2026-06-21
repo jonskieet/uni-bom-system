@@ -6,214 +6,312 @@
 <title>Tải UNI BOM System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
   :root{
+    --ink:#12152a;
+    --ink-soft:#1b2150;
+    --ink-line:rgba(255,255,255,.12);
+    --ink-text-2:rgba(255,255,255,.68);
+    --ink-text-3:rgba(255,255,255,.42);
+
     --primary:#3C3489;
+    --primary-deep:#26215C;
+    --primary-soft:#EEEDFE;
     --secondary:#185FA5;
-    --gradient: linear-gradient(120deg, #3C3489 0%, #185FA5 100%);
+
+    --success:#3B6D11;
+    --success-bg:#EAF3DE;
+    --warn:#854F0B;
+    --warn-bg:#FAEEDA;
+
     --text-1:#111827;
     --text-2:#6b7280;
     --text-3:#9ca3af;
     --border:#e5e7eb;
     --bg:#f6f7fb;
     --card:#ffffff;
-    --success:#3B6D11;
-    --success-bg:#EAF3DE;
-    --warn:#854F0B;
-    --warn-bg:#FAEEDA;
-    --radius-lg:16px;
-    --radius-md:10px;
+
+    --radius-lg:18px;
+    --radius-md:12px;
+
+    --sans:'Inter','Segoe UI Variable Text','Segoe UI',Tahoma,sans-serif;
+    --display:'Space Grotesk',var(--sans);
+    --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:'Segoe UI Variable Text','Segoe UI', Inter, Tahoma, sans-serif;
+    font-family:var(--sans);
     background:var(--bg);
     color:var(--text-1);
     -webkit-font-smoothing:antialiased;
   }
+  :focus-visible{ outline:2px solid var(--secondary); outline-offset:2px; border-radius:6px; }
+  a{ color:inherit; }
 
-  /* ── Top bar ───────────────────────────────────── */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
+
+  /* ── Console zone: topbar + hero share the dark surface ──────── */
+  .console{ background:var(--ink); color:#fff; }
+
   .topbar{
-    display:flex; align-items:center; gap:10px;
-    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:20px 32px;
+    border-bottom:1px solid var(--ink-line);
   }
-  .topbar .mark{
-    width:34px; height:34px; border-radius:9px;
-    background:var(--gradient);
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-weight:800; font-size:14px;
-    letter-spacing:.5px;
+  .topbar .brand{ display:flex; align-items:center; gap:11px; }
+  .brand-mark{ position:relative; width:32px; height:32px; }
+  .brand-mark .diamond{ position:absolute; inset:0; background:#4F47B3; border-radius:7px; transform:rotate(45deg) scale(.72); }
+  .brand-mark .letter{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:600; font-size:13px; color:#fff; }
+  .brand-name{ font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:.01em; }
+  .brand-name span{ display:block; font-family:var(--sans); font-weight:400; font-size:11px; color:var(--ink-text-3); margin-top:2px; }
+  .status-pill{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; color:var(--ink-text-2);
+    border:1px solid var(--ink-line); border-radius:999px; padding:6px 12px 6px 10px;
   }
-  .topbar .name{ font-weight:800; font-size:15px; }
-  .topbar .name span{ display:block; font-weight:500; font-size:11.5px; color:var(--text-2); margin-top:1px;}
+  .status-pill .dot{ width:6px; height:6px; border-radius:50%; background:#5DCAA5; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
 
-  /* ── Hero ──────────────────────────────────────── */
-  .hero{
-    position:relative;
-    background:var(--gradient);
-    color:#fff;
-    padding:64px 24px 96px;
-    text-align:center;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      radial-gradient(480px 280px at 12% 10%, rgba(255,255,255,.10), transparent 60%),
-      radial-gradient(520px 320px at 88% 100%, rgba(255,255,255,.08), transparent 60%);
-    pointer-events:none;
-  }
-  .hero-inner{ position:relative; max-width:640px; margin:0 auto; }
+  .hero{ padding:64px 32px 120px; }
+  .hero-inner{ max-width:640px; margin:0 auto; text-align:center; }
   .eyebrow{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:12px; font-weight:700; letter-spacing:.4px;
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.22);
-    padding:5px 12px; border-radius:999px;
-    margin-bottom:18px;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.05em; text-transform:uppercase;
+    background:var(--ink-soft); border:1px solid var(--ink-line);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px; color:var(--ink-text-2);
   }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:#7F77DD; }
   .hero h1{
-    font-size:34px; font-weight:800; margin:0 0 12px;
-    line-height:1.25;
+    font-family:var(--display); font-weight:600; font-size:38px; line-height:1.22;
+    margin:0 0 16px; letter-spacing:-.01em;
   }
-  .hero p{
-    font-size:15px; color:rgba(255,255,255,.86);
-    margin:0 0 30px; line-height:1.6;
-  }
-  .download-btn{
-    display:inline-flex; align-items:center; gap:10px;
-    background:#fff; color:var(--primary);
-    font-weight:800; font-size:15.5px;
-    padding:15px 30px; border-radius:12px;
-    text-decoration:none;
-    box-shadow:0 14px 34px rgba(0,0,0,.18);
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .download-btn:hover{ transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.22); }
-  .download-btn i{ font-size:20px; }
-  .meta-row{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:18px;
-    margin-top:18px; font-size:12.5px; color:rgba(255,255,255,.78);
-  }
-  .meta-row b{ color:#fff; font-weight:700;}
-  .meta-row .dot{ opacity:.5; }
+  .hero p{ font-size:15.5px; color:var(--ink-text-2); line-height:1.7; margin:0 auto 32px; max-width:480px; }
 
-  /* ── Card sections ─────────────────────────────── */
-  .wrap{ max-width:760px; margin:-56px auto 60px; padding:0 20px; position:relative; }
-  .card{
+  .cta-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:14px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    font-family:var(--sans); font-weight:600; font-size:14.5px;
+    padding:14px 24px; border-radius:11px; text-decoration:none; border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn i{ font-size:18px; }
+  .btn-primary{ background:#fff; color:var(--primary); box-shadow:0 16px 32px -12px rgba(0,0,0,.45); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 20px 38px -12px rgba(0,0,0,.5); }
+  .btn-ghost{ background:transparent; color:#fff; border-color:var(--ink-line); }
+  .btn-ghost:hover{ background:rgba(255,255,255,.07); }
+
+  .file-caption{ font-family:var(--mono); font-size:11.5px; color:var(--ink-text-3); margin-bottom:30px; }
+
+  .meta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-text-3);
+  }
+  .meta-row .sep{ opacity:.5; }
+
+  /* ── Manifest tag: the signature element ──────────────────────── */
+  .wrap{ max-width:760px; margin:0 auto; padding:0 20px 60px; position:relative; }
+  .manifest{
+    position:relative;
+    margin-top:-72px;
     background:var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius-lg);
-    padding:28px;
-    margin-bottom:18px;
-    box-shadow:0 1px 2px rgba(16,24,40,.04);
+    box-shadow:0 30px 60px -28px rgba(18,21,42,.4);
+    overflow:hidden;
+  }
+  .manifest::before{
+    content:''; position:absolute; top:16px; left:50%; transform:translateX(-50%);
+    width:13px; height:13px; border-radius:50%; background:var(--bg); border:2px solid var(--border);
+  }
+  .manifest-head{ padding:34px 28px 18px; text-align:center; }
+  .manifest-head .app{ font-family:var(--display); font-weight:600; font-size:17px; }
+  .manifest-head .sub{ font-family:var(--mono); font-size:11px; color:var(--text-3); margin-top:4px; letter-spacing:.04em; }
+  .manifest-divider{ border-top:1.5px dashed var(--border); margin:0 24px; }
+  .manifest-rows{
+    padding:22px 28px 10px; display:grid; grid-template-columns:1fr 1fr; gap:18px 22px;
+  }
+  .manifest-rows .row dt{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); margin:0 0 4px; }
+  .manifest-rows .row dd{ margin:0; font-size:13.5px; font-weight:600; }
+  .manifest-rows .row dd.mono{ font-family:var(--mono); color:var(--primary); }
+  .stamp{
+    position:absolute; top:26px; right:26px;
+    width:74px; height:74px; border-radius:50%;
+    border:2px solid var(--success); transform:rotate(-10deg);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-weight:700; font-size:8.5px; letter-spacing:.04em;
+    color:var(--success); text-align:center; line-height:1.35;
+  }
+  .stamp::before{ content:''; position:absolute; inset:6px; border:1px dashed var(--success); border-radius:50%; opacity:.55; }
+  .manifest:hover .stamp{ transform:rotate(-2deg); transition:transform .35s ease; }
+  .manifest-foot{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:18px 28px 26px;
+  }
+  .manifest-foot .btn-primary{ background:var(--primary-soft); color:var(--primary); box-shadow:none; font-size:13.5px; padding:11px 18px; }
+  .manifest-foot .btn-primary:hover{ background:#e3e1fb; transform:none; box-shadow:none; }
+  .manifest-foot .size{ font-family:var(--mono); font-size:12px; color:var(--text-3); }
+
+  /* ── Cards ─────────────────────────────────────────────────────── */
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg);
+    padding:30px; margin-top:18px;
   }
   .card h2{
-    display:flex; align-items:center; gap:9px;
-    font-size:15px; font-weight:800; margin:0 0 18px;
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--display); font-size:16px; font-weight:600; margin:0 0 22px;
   }
-  .card h2 i{ font-size:18px; color:var(--primary); }
+  .card h2 i{ font-size:19px; color:var(--primary); }
 
-  /* steps */
-  .steps{ display:flex; flex-direction:column; gap:0; }
-  .step{
-    display:flex; gap:16px; padding:14px 0;
-    border-bottom:1px solid var(--border);
-  }
-  .step:last-child{ border-bottom:none; padding-bottom:0; }
+  /* steps — a real procedure, so numbering + a connecting line carries meaning */
+  .steps{ position:relative; display:flex; flex-direction:column; gap:0; }
+  .steps::before{ content:''; position:absolute; left:18px; top:8px; bottom:8px; width:1px; background:var(--border); }
+  .step{ position:relative; display:flex; gap:18px; padding:16px 0; }
   .step:first-child{ padding-top:0; }
+  .step:last-child{ padding-bottom:0; }
   .step-num{
-    flex:none; width:30px; height:30px; border-radius:9px;
-    background:#EEEDFE; color:var(--primary);
+    position:relative; flex:none; width:36px; height:36px; border-radius:10px;
+    background:var(--primary-soft); color:var(--primary);
     display:flex; align-items:center; justify-content:center;
-    font-weight:800; font-size:13px;
+    font-family:var(--mono); font-weight:700; font-size:14px;
   }
-  .step-body b{ display:block; font-size:13.5px; margin-bottom:3px; }
-  .step-body span{ font-size:12.5px; color:var(--text-2); line-height:1.55; }
+  .step-body b{ display:block; font-size:14px; margin-bottom:4px; }
+  .step-body span{ font-size:13px; color:var(--text-2); line-height:1.6; }
+  .step-body code{ font-family:var(--mono); background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:1px 6px; font-size:12px; }
 
-  /* smartscreen note */
-  .note{
-    display:flex; gap:12px;
-    background:var(--warn-bg); border:1px solid #f3e0bb;
-    border-radius:var(--radius-md);
-    padding:14px 16px;
-    margin-top:6px;
+  /* smartscreen mini-dialog */
+  .note{ margin-top:18px; padding:16px 18px; background:var(--warn-bg); border:1px solid #f3e0bb; border-radius:var(--radius-md); }
+  .note-head{ display:flex; gap:10px; margin-bottom:12px; }
+  .note-head i{ color:var(--warn); font-size:18px; margin-top:1px; flex:none; }
+  .note-head b{ display:block; font-size:13.5px; color:#5c3a08; margin-bottom:3px; }
+  .note-head span{ font-size:12.5px; color:#6b4a12; line-height:1.6; }
+
+  .win-dialog{ background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden; max-width:340px; margin:0 auto; }
+  .win-dialog-bar{ background:#1f2430; color:#fff; font-size:11px; padding:7px 12px; display:flex; align-items:center; gap:7px; }
+  .win-dialog-bar i{ font-size:13px; }
+  .win-dialog-body{ padding:16px; font-size:12.5px; color:var(--text-1); line-height:1.55; }
+  .win-dialog-actions{ display:flex; justify-content:flex-end; gap:18px; padding:12px 16px; border-top:1px solid var(--border); background:#fafafa; }
+  .ann{ position:relative; display:inline-flex; align-items:center; }
+  .ann .badge{
+    position:absolute; top:-9px; left:-9px; width:18px; height:18px; border-radius:50%;
+    background:var(--primary); color:#fff; font-family:var(--mono); font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
   }
-  .note i{ color:var(--warn); font-size:18px; flex:none; margin-top:1px; }
-  .note b{ display:block; font-size:13px; color:#5c3a08; margin-bottom:3px; }
-  .note span{ font-size:12.5px; color:#6b4a12; line-height:1.6; }
+  .more-info{ color:var(--secondary); text-decoration:underline; font-weight:600; }
+  .run-anyway{ background:var(--ink); color:#fff; font-size:11.5px; font-weight:600; padding:6px 12px; border-radius:6px; }
 
-  /* requirements */
-  .reqs{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-  .req{
-    border:1px solid var(--border); border-radius:var(--radius-md);
-    padding:14px; text-align:center;
-  }
-  .req i{ font-size:20px; color:var(--secondary); margin-bottom:8px; display:block; }
-  .req b{ display:block; font-size:12.5px; }
-  .req span{ font-size:11.5px; color:var(--text-2); }
+  /* requirements as a spec sheet, matching the manifest's vernacular */
+  .spec-table{ width:100%; border-collapse:collapse; }
+  .spec-table tr{ border-bottom:1px solid var(--border); }
+  .spec-table tr:last-child{ border-bottom:none; }
+  .spec-table td{ padding:13px 4px; font-size:13.5px; vertical-align:middle; }
+  .spec-table td:first-child{ color:var(--text-2); display:flex; align-items:center; gap:10px; }
+  .spec-table td:first-child i{ font-size:16px; color:var(--secondary); }
+  .spec-table td:last-child{ font-family:var(--mono); font-weight:600; text-align:right; white-space:nowrap; }
 
-  /* changelog */
-  .changelog-item{ display:flex; gap:10px; padding:8px 0; font-size:12.5px; color:var(--text-2); }
-  .changelog-item i{ color:var(--success); font-size:14px; margin-top:2px; flex:none; }
+  /* release log */
+  .rlog-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:18px; }
+  .rlog-version{ font-family:var(--mono); background:var(--primary-soft); color:var(--primary); font-weight:700; font-size:12px; padding:4px 11px; border-radius:999px; }
+  .rlog-date{ font-size:12px; color:var(--text-3); }
+  .rlog-list{ position:relative; padding-left:18px; }
+  .rlog-list::before{ content:''; position:absolute; left:3px; top:6px; bottom:6px; width:1px; background:var(--border); }
+  .rlog-item{ position:relative; display:flex; gap:10px; padding:7px 0; font-size:13px; color:var(--text-2); line-height:1.55; }
+  .rlog-item::before{ content:''; position:absolute; left:-18px; top:13px; width:7px; height:7px; border-radius:50%; background:var(--success); border:2px solid var(--success-bg); }
 
-  /* footer */
-  .footer{
-    text-align:center; padding:0 20px 50px;
-    font-size:12px; color:var(--text-3);
-  }
+  .footer{ text-align:center; padding:6px 20px 56px; font-size:12.5px; color:var(--text-3); }
   .footer a{ color:var(--secondary); text-decoration:none; font-weight:600; }
+  .footer .line2{ margin-top:6px; font-size:11.5px; }
 
-  @media (max-width:560px){
-    .hero{ padding:48px 18px 80px; }
-    .hero h1{ font-size:26px; }
-    .reqs{ grid-template-columns:1fr; }
-    .wrap{ margin-top:-40px; }
+  @media (max-width:600px){
+    .topbar{ padding:16px 20px; }
+    .hero{ padding:48px 20px 96px; }
+    .hero h1{ font-size:28px; }
+    .manifest-rows{ grid-template-columns:1fr; }
+    .stamp{ position:static; margin:14px auto 0; transform:rotate(0deg); }
+    .manifest:hover .stamp{ transform:none; }
+    .manifest-foot{ flex-direction:column; align-items:stretch; }
+    .card{ padding:22px; }
+    .win-dialog-actions{ flex-direction:column; align-items:flex-end; gap:14px; }
   }
 </style>
 </head>
 <body>
 
-  <div class="topbar">
-    <div class="mark">U</div>
-    <div class="name">UNI BOM System<span>Nội bộ công ty</span></div>
-  </div>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <span class="eyebrow"><i class="ti ti-shield-check"></i> Bản cài đặt chính thức</span>
-      <h1>Tải ứng dụng UNI BOM System</h1>
-      <p>Ứng dụng quản lý BOM, công tác phí, chấm công nội bộ — cài một lần, dùng trên máy tính công ty.</p>
-
-      <a id="downloadBtn" class="download-btn" href="#" download>
-        <i class="ti ti-download"></i>
-        <span>Tải về cho Windows</span>
-      </a>
-
-      <div class="meta-row">
-        <span>Phiên bản <b id="metaVersion">1.0.0</b></span>
-        <span class="dot">•</span>
-        <span>Dung lượng <b id="metaSize">—</b></span>
-        <span class="dot">•</span>
-        <span>Cập nhật <b id="metaDate">—</b></span>
+  <div class="console">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><div class="diamond"></div><div class="letter">U</div></div>
+        <div class="brand-name">UNI BOM System<span>Phân phối nội bộ công ty</span></div>
       </div>
+      <div class="status-pill"><span class="dot"></span>Bản <span class="cfg-version">2.0.0</span> · ổn định</div>
     </div>
-  </section>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow"><span class="dot"></span>Bản phát hành nội bộ</span>
+        <h1>Cài UNI BOM System lên<br>máy làm việc của bạn</h1>
+        <p>Ứng dụng quản lý BOM, định giá, chấm công và công tác phí dùng trong nội bộ công ty. Tải file cài đặt, đăng nhập bằng tài khoản được IT cấp, dữ liệu đồng bộ ngay khi mở ứng dụng.</p>
+
+        <div class="cta-row">
+          <a id="downloadBtn" class="btn btn-primary" href="#" download>
+            <i class="ti ti-download"></i><span>Tải về cho Windows</span>
+          </a>
+          <a class="btn btn-ghost" href="#huong-dan">
+            <i class="ti ti-list-numbers"></i><span>Xem hướng dẫn cài đặt</span>
+          </a>
+        </div>
+        <div class="file-caption"><span class="cfg-filename">—</span></div>
+
+        <div class="meta-row">
+          <span>Windows 10/11 · 64-bit</span>
+          <span class="sep">•</span>
+          <span>Cập nhật <span class="cfg-date">—</span></span>
+          <span class="sep">•</span>
+          <span>RAM tối thiểu 4GB</span>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div class="wrap">
 
-    <div class="card">
-      <h2><i class="ti ti-list-numbers"></i> Hướng dẫn cài đặt</h2>
+    <div class="manifest reveal">
+      <div class="stamp">PHÁT<br>HÀNH<br>NỘI BỘ</div>
+      <div class="manifest-head">
+        <div class="app">UNI BOM System</div>
+        <div class="sub">MANIFEST PHÁT HÀNH</div>
+      </div>
+      <div class="manifest-divider"></div>
+      <dl class="manifest-rows">
+        <div class="row"><dt>Phiên bản</dt><dd class="mono cfg-version">2.0.0</dd></div>
+        <div class="row"><dt>Ngày phát hành</dt><dd class="cfg-date">—</dd></div>
+        <div class="row"><dt>Dung lượng</dt><dd class="mono cfg-size">—</dd></div>
+        <div class="row"><dt>Nền tảng</dt><dd>Windows 64-bit</dd></div>
+        <div class="row"><dt>Tên file</dt><dd class="mono cfg-filename" style="font-size:12px;">—</dd></div>
+        <div class="row"><dt>Mã bản phát hành</dt><dd class="mono cfg-relcode">—</dd></div>
+      </dl>
+      <div class="manifest-divider"></div>
+      <div class="manifest-foot">
+        <a id="downloadBtnManifest" class="btn btn-primary" href="#" download>
+          <i class="ti ti-file-download"></i><span>Tải file .exe</span>
+        </a>
+        <span class="size">SHA · nội bộ · không cần xác minh số</span>
+      </div>
+    </div>
+
+    <div class="card reveal" id="huong-dan">
+      <h2><i class="ti ti-list-numbers"></i>Hướng dẫn cài đặt</h2>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
             <b>Tải file cài đặt</b>
-            <span>Bấm nút "Tải về cho Windows" phía trên, chọn nơi lưu file <code>.exe</code>.</span>
+            <span>Bấm "Tải về cho Windows" phía trên, chọn nơi lưu file <code>.exe</code>.</span>
           </div>
         </div>
         <div class="step">
@@ -233,41 +331,47 @@
       </div>
 
       <div class="note">
-        <i class="ti ti-alert-triangle"></i>
-        <div>
-          <b>Windows cảnh báo "Unknown publisher"?</b>
-          <span>Đây là cảnh báo bình thường vì ứng dụng nội bộ chưa đăng ký chứng chỉ số. Bấm <b>"More info"</b> (Thông tin thêm) rồi chọn <b>"Run anyway"</b> (Vẫn chạy) để tiếp tục cài đặt.</span>
+        <div class="note-head">
+          <i class="ti ti-alert-triangle"></i>
+          <div>
+            <b>Windows cảnh báo "Unknown publisher"?</b>
+            <span>Bình thường — ứng dụng nội bộ chưa đăng ký chứng chỉ số. Làm theo 2 bước dưới đây để tiếp tục.</span>
+          </div>
+        </div>
+        <div class="win-dialog">
+          <div class="win-dialog-bar"><i class="ti ti-shield-check"></i>Windows Defender SmartScreen</div>
+          <div class="win-dialog-body">
+            Windows đã bảo vệ máy của bạn.<br>
+            Ứng dụng không xác định có thể gây hại cho thiết bị.
+          </div>
+          <div class="win-dialog-actions">
+            <span class="ann"><span class="badge">1</span><span class="more-info">More info</span></span>
+            <span class="ann"><span class="badge">2</span><span class="run-anyway">Run anyway</span></span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2><i class="ti ti-device-desktop"></i> Yêu cầu hệ thống</h2>
-      <div class="reqs">
-        <div class="req">
-          <i class="ti ti-brand-windows"></i>
-          <b>Windows 10/11</b>
-          <span>Bản 64-bit</span>
-        </div>
-        <div class="req">
-          <i class="ti ti-cpu"></i>
-          <b>4GB RAM</b>
-          <span>Tối thiểu</span>
-        </div>
-        <div class="req">
-          <i class="ti ti-wifi"></i>
-          <b>Kết nối mạng</b>
-          <span>Để đồng bộ dữ liệu</span>
-        </div>
-      </div>
+    <div class="card reveal">
+      <h2><i class="ti ti-device-desktop"></i>Yêu cầu hệ thống</h2>
+      <table class="spec-table">
+        <tr><td><i class="ti ti-brand-windows"></i>Hệ điều hành</td><td>Windows 10 / 11, 64-bit</td></tr>
+        <tr><td><i class="ti ti-cpu"></i>Bộ nhớ RAM</td><td>4 GB tối thiểu</td></tr>
+        <tr><td><i class="ti ti-device-sd-card"></i>Dung lượng trống</td><td>300 MB trở lên</td></tr>
+        <tr><td><i class="ti ti-wifi"></i>Kết nối mạng</td><td>Cần để đồng bộ dữ liệu</td></tr>
+      </table>
     </div>
 
-    <div class="card">
-      <h2><i class="ti ti-sparkles"></i> Có gì mới</h2>
-      <div id="changelogList">
-        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Quản lý công tác phí: tách khoản chi theo từng ngày, hỗ trợ nhiều loại chi phí.</span></div>
-        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Xuất Excel báo cáo công tác phí theo cấu trúc khoản chi mới.</span></div>
-        <div class="changelog-item"><i class="ti ti-circle-check"></i><span>Cải thiện giao diện trang Quản lý công tác phí.</span></div>
+    <div class="card reveal">
+      <h2><i class="ti ti-sparkles"></i>Nhật ký phát hành</h2>
+      <div class="rlog-head">
+        <span class="rlog-version cfg-version">2.0.0</span>
+        <span class="rlog-date cfg-date">—</span>
+      </div>
+      <div class="rlog-list" id="changelogList">
+        <div class="rlog-item">Quản lý công tác phí: tách khoản chi theo từng ngày, hỗ trợ nhiều loại chi phí.</div>
+        <div class="rlog-item">Xuất Excel báo cáo công tác phí theo cấu trúc khoản chi mới.</div>
+        <div class="rlog-item">Cải thiện giao diện trang Quản lý công tác phí.</div>
       </div>
     </div>
 
@@ -275,6 +379,7 @@
 
   <div class="footer">
     Gặp sự cố khi cài đặt? Liên hệ <a href="mailto:it@congty.com">it@congty.com</a> để được hỗ trợ.
+    <div class="line2">Trang phân phối nội bộ — không chia sẻ ra ngoài công ty.</div>
   </div>
 
 <script>
@@ -282,17 +387,38 @@
   // CẤU HÌNH — chỉnh các giá trị bên dưới mỗi khi ra bản mới
   // ============================================================
   const CONFIG = {
-    downloadUrl: "https://github.com/jonskieet/uni-bom-system/releases/download/v2.0.0.0/UNI.Enterprise.Managament.System-Windows-0.0.0-Setup.exe", // <-- thay link tải thật vào đây
+    downloadUrl: "https://github.com/jonskieet/uni-bom-system/releases/download/v2.0.0.0/UNI.Enterprise.Managament.System-Windows-0.0.0-Setup.exe",
     version: "2.0.0",
     sizeMB: "107.06 MB",
     releaseDate: "19/06/2026",
   }
   // ============================================================
 
+  const fileName = decodeURIComponent(CONFIG.downloadUrl.split('/').pop())
+  const [d, m, y] = CONFIG.releaseDate.split('/')
+  const releaseCode = (d && m && y) ? `REL-${y}${m}${d}` : '—'
+
   document.getElementById('downloadBtn').href = CONFIG.downloadUrl
-  document.getElementById('metaVersion').textContent = CONFIG.version
-  document.getElementById('metaSize').textContent = CONFIG.sizeMB
-  document.getElementById('metaDate').textContent = CONFIG.releaseDate
+  document.getElementById('downloadBtnManifest').href = CONFIG.downloadUrl
+
+  document.querySelectorAll('.cfg-version').forEach(el => el.textContent = CONFIG.version)
+  document.querySelectorAll('.cfg-size').forEach(el => el.textContent = CONFIG.sizeMB)
+  document.querySelectorAll('.cfg-date').forEach(el => el.textContent = CONFIG.releaseDate)
+  document.querySelectorAll('.cfg-filename').forEach(el => el.textContent = fileName)
+  document.querySelectorAll('.cfg-relcode').forEach(el => el.textContent = releaseCode)
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const revealEls = document.querySelectorAll('.reveal')
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('in-view'); obs.unobserve(entry.target) }
+      })
+    }, { threshold: .12 })
+    revealEls.forEach(el => obs.observe(el))
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'))
+  }
 </script>
 
 </body>
