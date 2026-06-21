@@ -203,6 +203,23 @@
   .module-card p{font-size:14px;color:var(--slate);}
 
   /* ---------- WORKFLOW ---------- */
+  .flow-stage{margin-bottom:46px;}
+  .flow-stage:last-child{margin-bottom:0;}
+  .stage-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+  .stage-no{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;color:#fff;background:var(--orange-deep);
+    padding:6px 13px;border-radius:999px;flex-shrink:0;
+  }
+  .stage-head h3{font-size:19px;font-weight:700;}
+  .branch-card{
+    background:var(--gold-paler);border:1.5px dashed var(--orange);border-radius:var(--radius-md);
+    padding:20px 24px;margin:6px 0 0 78px;
+  }
+  .branch-title{font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:14.5px;color:var(--orange-deep);margin-bottom:10px;}
+  .branch-list{display:flex;flex-direction:column;gap:8px;}
+  .branch-list li{font-size:14px;color:var(--slate);position:relative;padding-left:16px;}
+  .branch-list li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:2px;background:var(--orange);}
   .flow-rail{position:relative;margin-top:10px;}
   .flow-rail::before{
     content:"";position:absolute;left:27px;top:8px;bottom:8px;width:2px;
@@ -231,7 +248,7 @@
   }
 
   /* ---------- ROLES ---------- */
-  .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .roles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .role-card{
     border-radius:var(--radius-md);padding:30px 26px;
     border:1px solid var(--line);background:#fff;
@@ -348,6 +365,7 @@
     section{padding:64px 0;}
     .flow-step{grid-template-columns:46px 1fr;}
     .flow-step .marker{width:46px;height:46px;font-size:15px;}
+    .branch-card{margin-left:0;}
     .footer-grid{grid-template-columns:1fr;}
   }
 </style>
@@ -388,23 +406,21 @@
         <div class="hero-chips">
           <span class="chip">Bản phát hành v1.0</span>
           <span class="chip">10 module nghiệp vụ</span>
-          <span class="chip">3 cấp phân quyền</span>
+          <span class="chip">4 vai trò phân quyền</span>
           <span class="chip">Ứng dụng desktop</span>
         </div>
       </div>
 
       <div class="hero-rail-card reveal">
         <div class="hero-rail-head">
-          <span class="tag">Quy trình vận hành</span>
-          <span class="pom">POM-2026-0142</span>
+          <span class="tag">Quy trình theo dõi dự án</span>
+          <span class="pom">DA-2026-0142</span>
         </div>
         <div class="rail-track">
-          <div class="rail-node"><span class="dot"></span><div class="label">Khảo sát hiện trường</div><div class="sub">Ghi nhận thông tin, hình ảnh thực địa</div></div>
-          <div class="rail-node"><span class="dot"></span><div class="label">Lập báo giá (POM)</div><div class="sub">Tự động tính giá từ bảng giá &amp; BOM</div></div>
-          <div class="rail-node"><span class="dot"></span><div class="label">Phê duyệt kỹ thuật</div><div class="sub">Technical Lead kiểm tra &amp; ký duyệt</div></div>
-          <div class="rail-node"><span class="dot"></span><div class="label">Lập kế hoạch thi công</div><div class="sub">Phân việc, theo dõi tiến độ Kanban</div></div>
-          <div class="rail-node"><span class="dot"></span><div class="label">Chấm công &amp; công tác</div><div class="sub">Ghi nhận giờ làm, chi phí hiện trường</div></div>
-          <div class="rail-node"><span class="dot"></span><div class="label">Báo cáo tổng hợp</div><div class="sub">Dashboard theo từng vai trò</div></div>
+          <div class="rail-node"><span class="dot"></span><div class="label">Khảo sát &amp; hồ sơ kỹ thuật</div><div class="sub">Kỹ thuật khảo sát, lập báo cáo &amp; file thiết bị</div></div>
+          <div class="rail-node"><span class="dot"></span><div class="label">Báo giá &amp; tư vấn khách hàng</div><div class="sub">Sale Admin lên giá, Sale gửi &amp; chốt với khách</div></div>
+          <div class="rail-node"><span class="dot"></span><div class="label">Triển khai thi công</div><div class="sub">Xử lý phát sinh cùng Trưởng phòng nếu có lỗi</div></div>
+          <div class="rail-node"><span class="dot"></span><div class="label">Nghiệm thu &amp; bàn giao</div><div class="sub">Kiểm tra chất lượng, lưu trữ hồ sơ dự án</div></div>
         </div>
       </div>
     </div>
@@ -421,18 +437,18 @@
       <div class="problem-grid">
         <div class="problem-card reveal">
           <span class="num">01</span>
-          <h4>Báo giá sai vì nhập tay</h4>
-          <p>Bảng giá cập nhật trên Excel, sao chép qua nhiều file khiến đơn giá và mã sản phẩm dễ lệch nhau giữa các lần báo giá.</p>
+          <h4>Hồ sơ dự án nằm rải rác nhiều nơi</h4>
+          <p>Báo cáo khảo sát, file thiết bị và bảng báo giá của cùng một dự án không gắn theo một mã chung, nên khi cần đối chiếu lại phải lục tìm qua nhiều nơi.</p>
         </div>
         <div class="problem-card reveal">
           <span class="num">02</span>
-          <h4>Phê duyệt không có dấu vết</h4>
-          <p>Duyệt báo giá qua tin nhắn hoặc email khiến không ai chắc bản nào là bản cuối, hay ai đã thực sự ký duyệt.</p>
+          <h4>Mất bản cũ khi khách yêu cầu sửa nhiều lần</h4>
+          <p>Mỗi lần khách hàng yêu cầu chỉnh giá hoặc chỉnh kỹ thuật, bản trước thường bị ghi đè mất, không còn cách nào xem lại bản V1, V2, V3 đã gửi khách trước đó.</p>
         </div>
         <div class="problem-card reveal">
           <span class="num">03</span>
-          <h4>Mất dấu nhân sự hiện trường</h4>
-          <p>Chấm công và công tác phí của nhân viên kỹ thuật ngoài công trình thường báo cáo trễ, khó đối chiếu với tiến độ thi công.</p>
+          <h4>Bàn giao giữa các bộ phận hay bị trễ</h4>
+          <p>Kỹ thuật, Sale và Sale Admin chuyển hồ sơ qua lại bằng tin nhắn hoặc email, không có thông báo ngay khi đến lượt bộ phận tiếp theo xử lý.</p>
         </div>
       </div>
     </div>
@@ -456,8 +472,8 @@
 
         <div class="module-card reveal">
           <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 2h6l3 6-6 14L3 8z"/></svg></div>
-          <h4>Báo giá &amp; Phê duyệt (POM)</h4>
-          <p>Tạo báo giá từ bảng giá chuẩn, luân chuyển phê duyệt theo vai trò với lịch sử minh bạch từng bước.</p>
+          <h4>Báo giá &amp; theo dõi phản hồi</h4>
+          <p>Lên giá từ file thiết bị, gửi báo giá cho khách hàng và theo dõi trạng thái phản hồi qua từng phiên bản chỉnh sửa.</p>
         </div>
 
         <div class="module-card reveal">
@@ -499,7 +515,7 @@
         <div class="module-card reveal">
           <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="11" width="6" height="9"/><rect x="9" y="6" width="6" height="14"/><rect x="15" y="2" width="6" height="18"/></svg></div>
           <h4>Phân quyền theo vai trò</h4>
-          <p>Ba cấp quyền Admin, Kinh doanh và Kỹ thuật, mỗi vai trò chỉ thấy đúng phần dữ liệu của mình.</p>
+          <p>Bốn vai trò Kỹ thuật, Kinh doanh, Sale Admin và Trưởng phòng, mỗi vai trò chỉ thấy đúng phần dữ liệu của mình.</p>
         </div>
 
         <div class="module-card reveal">
@@ -517,60 +533,113 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Quy trình</span>
-        <h2>Một đơn hàng kỹ thuật, đi qua đúng 6 bước — không lệch khỏi quy trình</h2>
-        <p>Mỗi bước được giao đúng vai trò chịu trách nhiệm, dữ liệu chuyển tiếp tự động sang bước kế tiếp.</p>
+        <h2>9 bước, 4 giai đoạn — từ khảo sát đến hoàn tất dự án</h2>
+        <p>Đây là đúng luồng xử lý thực tế hiện tại, bao gồm hai nhánh rẽ: khi khách hàng yêu cầu chỉnh sửa, và khi thi công phát sinh lỗi.</p>
       </div>
-      <div class="flow-rail">
 
-        <div class="flow-step reveal">
-          <div class="marker">01</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Khảo sát hiện trường</h4><p>Nhân sự kỹ thuật ghi nhận hiện trạng, hình ảnh và yêu cầu khách hàng ngay tại công trình.</p></div>
-            <span class="flow-role">Kỹ thuật</span>
+      <div class="flow-stage reveal">
+        <div class="stage-head"><span class="stage-no">Giai đoạn 1</span><h3>Khảo sát &amp; xây dựng giải pháp kỹ thuật</h3></div>
+        <div class="flow-rail">
+          <div class="flow-step reveal">
+            <div class="marker">01</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Nhận yêu cầu khảo sát</h4><p>Kỹ thuật nhận thông tin liên hệ khách hàng và chuyên đề/nội dung cần khảo sát.</p></div>
+              <span class="flow-role">Kỹ thuật</span>
+            </div>
+          </div>
+          <div class="flow-step reveal">
+            <div class="marker">02</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Khảo sát thực tế</h4><p>Lập báo cáo khảo sát, file danh sách thiết bị đề xuất và thuyết minh kỹ thuật.</p></div>
+              <span class="flow-role">Kỹ thuật</span>
+            </div>
+          </div>
+          <div class="flow-step reveal">
+            <div class="marker">03</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Bàn giao hồ sơ</h4><p>Gửi báo cáo khảo sát &amp; thuyết minh kỹ thuật cho Sale; gửi file thiết bị cho Sale Admin.</p></div>
+              <span class="flow-role">Kỹ thuật</span>
+            </div>
           </div>
         </div>
-
-        <div class="flow-step reveal">
-          <div class="marker">02</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Lập báo giá (POM)</h4><p>Kinh doanh khởi tạo báo giá dựa trên kết quả khảo sát, hệ thống tự tính theo bảng giá hiện hành.</p></div>
-            <span class="flow-role">Kinh doanh</span>
-          </div>
-        </div>
-
-        <div class="flow-step reveal">
-          <div class="marker">03</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Phê duyệt kỹ thuật</h4><p>Technical Lead kiểm tra tính khả thi và vật tư trước khi ký duyệt, mọi thay đổi đều được lưu vết.</p></div>
-            <span class="flow-role">Technical Lead</span>
-          </div>
-        </div>
-
-        <div class="flow-step reveal">
-          <div class="marker">04</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Lập kế hoạch thi công</h4><p>Đơn hàng được chuyển thành đầu việc trên Planner, phân công và theo dõi tiến độ theo thời gian thực.</p></div>
-            <span class="flow-role">Quản lý dự án</span>
-          </div>
-        </div>
-
-        <div class="flow-step reveal">
-          <div class="marker">05</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Vận hành hiện trường</h4><p>Chấm công và công tác phí của nhân sự thi công được ghi nhận song song với tiến độ dự án.</p></div>
-            <span class="flow-role">Toàn bộ nhân sự</span>
-          </div>
-        </div>
-
-        <div class="flow-step reveal">
-          <div class="marker">06</div>
-          <div class="flow-body">
-            <div class="flow-text"><h4>Báo cáo tổng hợp</h4><p>Quản trị viên xem toàn cảnh doanh thu, tiến độ và chi phí trên một dashboard duy nhất.</p></div>
-            <span class="flow-role">Admin</span>
-          </div>
-        </div>
-
       </div>
+
+      <div class="flow-stage reveal">
+        <div class="stage-head"><span class="stage-no">Giai đoạn 2</span><h3>Báo giá &amp; phản hồi từ khách hàng</h3></div>
+        <div class="flow-rail">
+          <div class="flow-step reveal">
+            <div class="marker">04</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Lên giá thiết bị</h4><p>Tiếp nhận file thiết bị từ Kỹ thuật, làm giá và gửi lại bảng báo giá cho Sale.</p></div>
+              <span class="flow-role">Sale Admin</span>
+            </div>
+          </div>
+          <div class="flow-step reveal">
+            <div class="marker">05</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Gửi &amp; tư vấn khách hàng</h4><p>Tổng hợp báo cáo khảo sát và báo giá thiết bị, gửi và tư vấn cho khách hàng.</p></div>
+              <span class="flow-role">Kinh doanh</span>
+            </div>
+          </div>
+          <div class="flow-step reveal">
+            <div class="marker">06</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Ghi nhận phản hồi</h4><p>Tiếp nhận feedback từ khách hàng, theo dõi trạng thái chờ phản hồi cho đến khi chốt.</p></div>
+              <span class="flow-role">Kinh doanh</span>
+            </div>
+          </div>
+        </div>
+        <div class="branch-card reveal">
+          <div class="branch-title">Nếu khách hàng yêu cầu chỉnh sửa</div>
+          <ul class="branch-list">
+            <li><strong>Sửa giá / thương lượng</strong> — Sale Admin kiểm tra, điều chỉnh lại giá rồi gửi lại Sale.</li>
+            <li><strong>Sửa phương án / kỹ thuật</strong> — Kỹ thuật kiểm tra, chỉnh lại báo cáo hoặc thiết bị rồi gửi lại Sale.</li>
+            <li>Lặp lại đến khi khách hàng <strong>đồng ý</strong> phương án, dự án chuyển sang thi công.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flow-stage reveal">
+        <div class="stage-head"><span class="stage-no">Giai đoạn 3</span><h3>Triển khai thi công &amp; xử lý phát sinh</h3></div>
+        <div class="flow-rail">
+          <div class="flow-step reveal">
+            <div class="marker">07</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Tiến hành thi công</h4><p>Khách hàng chốt phương án, dự án chính thức chuyển sang giai đoạn thi công.</p></div>
+              <span class="flow-role">Kỹ thuật</span>
+            </div>
+          </div>
+          <div class="flow-step reveal">
+            <div class="marker">08</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Theo dõi trong quá trình thi công</h4><p>Nếu phát sinh lỗi hoặc sự cố, xử lý theo nhánh rẽ bên dưới; nếu không, chuyển thẳng sang nghiệm thu.</p></div>
+              <span class="flow-role">Kỹ thuật triển khai</span>
+            </div>
+          </div>
+        </div>
+        <div class="branch-card reveal">
+          <div class="branch-title">Nếu xảy ra lỗi hoặc sự cố khi thi công</div>
+          <ul class="branch-list">
+            <li>Kỹ thuật triển khai ghi nhận chi tiết lỗi.</li>
+            <li>Gửi báo cáo sự cố cho Trưởng phòng.</li>
+            <li>Trưởng phòng phối hợp đưa ra phương án và phê duyệt xử lý lỗi, sau đó quay lại luồng thi công.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flow-stage reveal">
+        <div class="stage-head"><span class="stage-no">Giai đoạn 4</span><h3>Nghiệm thu &amp; bàn giao</h3></div>
+        <div class="flow-rail">
+          <div class="flow-step reveal">
+            <div class="marker">09</div>
+            <div class="flow-body">
+              <div class="flow-text"><h4>Hoàn tất dự án</h4><p>Kiểm tra chất lượng cuối cùng sau khi xử lý lỗi (hoặc thi công suôn sẻ), đóng và lưu trữ hồ sơ dự án.</p></div>
+              <span class="flow-role">Kỹ thuật &amp; Trưởng phòng</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -579,41 +648,52 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Phân quyền</span>
-        <h2>Mỗi vai trò có đúng góc nhìn mình cần, không hơn không kém</h2>
-        <p>Phân quyền theo vai trò giúp dữ liệu nhạy cảm chỉ đến đúng người, đồng thời rút gọn màn hình làm việc cho từng vị trí.</p>
+        <h2>4 vai trò, mỗi vai trò đúng một phần trong quy trình dự án</h2>
+        <p>Phân quyền theo đúng vai trò thực tế hiện nay, mỗi vị trí chỉ thấy đúng phần dữ liệu và công việc của mình.</p>
       </div>
       <div class="roles-grid">
 
         <div class="role-card reveal">
-          <span class="role-tag">Kinh doanh</span>
-          <h3>Tập trung vào khách hàng &amp; báo giá</h3>
+          <span class="role-tag">Kỹ thuật (KT)</span>
+          <h3>Khảo sát &amp; giám sát thi công</h3>
           <ul>
-            <li>Tạo và quản lý hồ sơ khách hàng</li>
-            <li>Soạn báo giá từ bảng giá chuẩn</li>
-            <li>Theo dõi trạng thái phê duyệt theo thời gian thực</li>
-            <li>Xuất báo giá Excel gửi khách hàng</li>
-          </ul>
-        </div>
-
-        <div class="role-card active reveal">
-          <span class="role-tag">Technical Lead</span>
-          <h3>Kiểm soát kỹ thuật &amp; phê duyệt</h3>
-          <ul>
-            <li>Xem kết quả khảo sát và bảng vật tư (BOM)</li>
-            <li>Phê duyệt hoặc yêu cầu điều chỉnh báo giá</li>
-            <li>Quản lý kế hoạch thi công trên Kanban</li>
-            <li>Theo dõi tiến độ từng đầu việc kỹ thuật</li>
+            <li>Nhận yêu cầu khảo sát, đi khảo sát thực tế</li>
+            <li>Lập báo cáo khảo sát, file thiết bị, thuyết minh kỹ thuật</li>
+            <li>Chỉnh lại hồ sơ kỹ thuật khi khách hàng yêu cầu</li>
+            <li>Giám sát thi công, ghi nhận &amp; báo cáo lỗi phát sinh</li>
           </ul>
         </div>
 
         <div class="role-card reveal">
-          <span class="role-tag">Admin</span>
-          <h3>Toàn quyền vận hành hệ thống</h3>
+          <span class="role-tag">Kinh doanh (Sale)</span>
+          <h3>Làm việc trực tiếp với khách hàng</h3>
           <ul>
-            <li>Quản lý người dùng và phân quyền</li>
-            <li>Quản lý sản phẩm, danh mục, bảng giá</li>
-            <li>Duyệt chấm công và công tác phí</li>
-            <li>Xem báo cáo tổng hợp toàn doanh nghiệp</li>
+            <li>Tiếp nhận báo cáo khảo sát và bảng báo giá</li>
+            <li>Tổng hợp tài liệu, tư vấn và gửi khách hàng</li>
+            <li>Ghi nhận phản hồi, điều phối yêu cầu chỉnh sửa</li>
+            <li>Theo dõi trạng thái chờ phản hồi đến khi khách chốt</li>
+          </ul>
+        </div>
+
+        <div class="role-card reveal">
+          <span class="role-tag">Sale Admin (SA)</span>
+          <h3>Quản lý sản phẩm &amp; báo giá</h3>
+          <ul>
+            <li>Quản lý danh mục sản phẩm và cấu hình giá</li>
+            <li>Tiếp nhận file thiết bị từ Kỹ thuật, lên giá</li>
+            <li>Xuất bảng báo giá gửi cho Sale</li>
+            <li>Điều chỉnh lại giá khi khách hàng thương lượng</li>
+          </ul>
+        </div>
+
+        <div class="role-card active reveal">
+          <span class="role-tag">Trưởng phòng</span>
+          <h3>Xử lý sự cố &amp; phê duyệt</h3>
+          <ul>
+            <li>Tiếp nhận báo cáo lỗi, sự cố trong quá trình thi công</li>
+            <li>Phối hợp cùng Kỹ thuật đưa ra phương án xử lý</li>
+            <li>Phê duyệt phương án trước khi triển khai lại</li>
+            <li>Theo dõi tiến độ xử lý đến khi đóng sự cố</li>
           </ul>
         </div>
 
@@ -730,7 +810,7 @@
             <div class="form-field"><label for="f-company">Phòng ban</label><input id="f-company" type="text" placeholder="Kinh doanh / Kỹ thuật / Kế hoạch..."></div>
           </div>
           <div class="form-row">
-            <div class="form-field"><label for="f-phone">Vai trò cần cấp quyền</label><input id="f-phone" type="text" placeholder="Kinh doanh / Technical Lead / Admin" required></div>
+            <div class="form-field"><label for="f-phone">Vai trò cần cấp quyền</label><input id="f-phone" type="text" placeholder="Kỹ thuật / Kinh doanh / Sale Admin / Trưởng phòng" required></div>
             <div class="form-field"><label for="f-email">Email nội bộ</label><input id="f-email" type="email" placeholder="ten@congty.vn"></div>
           </div>
           <div class="form-row">
