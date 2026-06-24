@@ -413,7 +413,25 @@
   }
   .platform-coming-tag.android-tag{background:#3DDC8422;color:#1a8041;}
   .platform-coming-tag.ios-tag{background:#007AFF22;color:#0055CC;}
-  .mobile-qr-note{
+  .mobile-platform-card.highlighted{
+    box-shadow: 0 0 0 3px currentColor, var(--shadow-card);
+    animation: highlightFade 1.8s ease forwards;
+  }
+  .mobile-platform-card.android.highlighted{box-shadow:0 0 0 3px #3DDC84, var(--shadow-card);}
+  .mobile-platform-card.ios.highlighted{box-shadow:0 0 0 3px #007AFF, var(--shadow-card);}
+  @keyframes highlightFade{
+    0%{box-shadow:0 0 0 3px #3DDC84, var(--shadow-card);transform:translateY(-4px);}
+    70%{box-shadow:0 0 0 3px #3DDC84, var(--shadow-card);transform:translateY(-4px);}
+    100%{box-shadow:var(--shadow-card);transform:translateY(0);}
+  }
+  .mobile-platform-card.ios.highlighted{
+    animation: highlightFadeIos 1.8s ease forwards;
+  }
+  @keyframes highlightFadeIos{
+    0%{box-shadow:0 0 0 3px #007AFF, var(--shadow-card);transform:translateY(-4px);}
+    70%{box-shadow:0 0 0 3px #007AFF, var(--shadow-card);transform:translateY(-4px);}
+    100%{box-shadow:var(--shadow-card);transform:translateY(0);}
+  }
     margin-top:14px;padding:12px 16px;border-radius:var(--radius-sm);
     background:var(--paper-dim);border:1px dashed var(--line);
     font-size:13px;color:var(--slate-soft);text-align:center;
@@ -565,11 +583,11 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
             Tải về cho Windows
           </a>
-          <a href="#" class="btn btn-secondary" style="background:#3DDC8422;border-color:#3DDC8455;color:#1a8041;">
+          <a href="#download-android" class="btn btn-secondary" style="background:#3DDC8422;border-color:#3DDC8455;color:#1a8041;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.69 8.32 13.38 8 12 8s-2.69.32-3.47.91L6.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85L7.4 9.48C5.18 10.67 3.62 12.83 3.5 15.5h17c-.12-2.67-1.68-4.83-3.9-6.02zM8.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
             Android APK
           </a>
-          <a href="#" class="btn btn-secondary" style="background:#007AFF22;border-color:#007AFF55;color:#005FCC;">
+          <a href="#download-ios" class="btn btn-secondary" style="background:#007AFF22;border-color:#007AFF55;color:#005FCC;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             iOS / TestFlight
           </a>
@@ -616,7 +634,7 @@
         <!-- MOBILE DOWNLOAD -->
         <div class="mobile-download-grid reveal">
           <!-- Android -->
-          <div class="mobile-platform-card android">
+          <div class="mobile-platform-card android" id="download-android">
             <span class="platform-coming-tag android-tag">Beta</span>
             <div class="platform-badge android">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.69 8.32 13.38 8 12 8s-2.69.32-3.47.91L6.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85L7.4 9.48C5.18 10.67 3.62 12.83 3.5 15.5h17c-.12-2.67-1.68-4.83-3.9-6.02zM8.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
@@ -630,7 +648,7 @@
               <li>Kiến trúc ARM64 / x86_64</li>
               <li>Link sẽ được IT cập nhật</li>
             </ul>
-            <a href="#" class="btn btn-android" style="width:100%;justify-content:center;font-size:14px;">
+            <a href="https://github.com/jonskieet/uni-bom-system/releases/download/v2.0.0.0/UNI.Enterprise.Managament.System.apk" class="btn btn-android" style="width:100%;justify-content:center;font-size:14px;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12-4-4m4 4 4-4M4 17v3h16v-3"/></svg>
               Tải file APK
             </a>
@@ -638,8 +656,7 @@
           </div>
 
           <!-- iOS -->
-          <div class="mobile-platform-card ios">
-            <span class="platform-coming-tag ios-tag">Sắp ra mắt</span>
+          <div class="mobile-platform-card ios" id="download-ios">
             <div class="platform-badge ios">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
               iOS
@@ -1159,6 +1176,20 @@
     links.style.background = '#FFFBF5';
     links.style.padding = '20px 28px';
     links.style.borderBottom = '1px solid #ECE0CF';
+  });
+
+  // highlight mobile card khi click nút từ download-actions
+  ['download-android', 'download-ios'].forEach(id => {
+    const btn = document.querySelector(`a[href="#${id}"]`);
+    const card = document.getElementById(id);
+    if (btn && card) {
+      btn.addEventListener('click', () => {
+        card.classList.remove('highlighted');
+        void card.offsetWidth; // reset animation
+        card.classList.add('highlighted');
+        card.addEventListener('animationend', () => card.classList.remove('highlighted'), { once: true });
+      });
+    }
   });
 
   // reveal on scroll
