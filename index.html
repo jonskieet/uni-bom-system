@@ -363,6 +363,66 @@
     .download-shell{padding:36px 22px;}
   }
 
+  /* ---------- MOBILE DOWNLOAD ---------- */
+  .mobile-download-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;
+  }
+  .mobile-platform-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:28px 24px;position:relative;overflow:hidden;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .mobile-platform-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card);border-color:transparent;}
+  .mobile-platform-card.android{border-top:3px solid #3DDC84;}
+  .mobile-platform-card.ios{border-top:3px solid #007AFF;}
+  .platform-badge{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+    letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;padding:6px 13px;
+    border-radius:999px;
+  }
+  .platform-badge.android{background:#3DDC8422;color:#1a8041;}
+  .platform-badge.ios{background:#007AFF22;color:#0055CC;}
+  .platform-badge svg{width:14px;height:14px;}
+  .mobile-platform-card h4{font-size:18px;margin-bottom:8px;font-weight:700;}
+  .mobile-platform-card .plat-desc{font-size:14px;color:var(--slate);margin-bottom:20px;line-height:1.55;}
+  .mobile-filename{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--slate-soft);
+    background:var(--paper-dim);border:1px solid var(--line);border-radius:var(--radius-sm);
+    padding:8px 12px;margin-bottom:18px;word-break:break-all;line-height:1.5;
+  }
+  .mobile-filename .hl{color:var(--orange-deep);font-weight:600;}
+  .mobile-meta-list{display:flex;flex-direction:column;gap:7px;margin-bottom:22px;}
+  .mobile-meta-list li{
+    font-size:13px;color:var(--slate);display:flex;align-items:center;gap:8px;
+  }
+  .mobile-meta-list li::before{
+    content:"";width:5px;height:5px;border-radius:50%;flex-shrink:0;
+  }
+  .android .mobile-meta-list li::before{background:#3DDC84;}
+  .ios .mobile-meta-list li::before{background:#007AFF;}
+  .btn-android{background:#3DDC84;color:#0a2e14;}
+  .btn-android:hover{background:#2bb870;transform:translateY(-2px);}
+  .btn-ios{background:#007AFF;color:#fff;}
+  .btn-ios:hover{background:#005FCC;transform:translateY(-2px);}
+  .platform-coming-tag{
+    position:absolute;top:16px;right:16px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+    letter-spacing:0.08em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;
+  }
+  .platform-coming-tag.android-tag{background:#3DDC8422;color:#1a8041;}
+  .platform-coming-tag.ios-tag{background:#007AFF22;color:#0055CC;}
+  .mobile-qr-note{
+    margin-top:14px;padding:12px 16px;border-radius:var(--radius-sm);
+    background:var(--paper-dim);border:1px dashed var(--line);
+    font-size:13px;color:var(--slate-soft);text-align:center;
+    font-family:'JetBrains Mono',monospace;
+  }
+  @media (max-width:720px){
+    .mobile-download-grid{grid-template-columns:1fr;}
+  }
+
   /* ---------- CONTACT ---------- */
   .contact-shell{
     background:var(--ink);border-radius:var(--radius-lg);
@@ -471,7 +531,7 @@
           <span class="chip">Bản phát hành v1.0</span>
           <span class="chip">10 module nghiệp vụ</span>
           <span class="chip">4 vai trò phân quyền</span>
-          <span class="chip">Ứng dụng desktop</span>
+          <span class="chip">Windows · Android · iOS</span>
         </div>
       </div>
 
@@ -496,8 +556,8 @@
       <div class="download-shell reveal">
         <div class="download-head">
           <span class="eyebrow">Tải ứng dụng</span>
-          <h2>Cài UNI BOM System lên máy làm việc của bạn</h2>
-          <p>Ứng dụng quản lý BOM, định giá, chấm công và công tác phí dùng trong nội bộ công ty. Tải file cài đặt, đăng nhập bằng tài khoản được IT cấp, dữ liệu đồng bộ ngay khi mở ứng dụng.</p>
+          <h2>Cài UNI BOM System trên thiết bị của bạn</h2>
+          <p>Ứng dụng quản lý BOM, định giá, chấm công và công tác phí dùng trong nội bộ công ty. Có sẵn trên Windows, Android và iOS. Đăng nhập bằng tài khoản IT cấp, dữ liệu đồng bộ ngay khi mở.</p>
         </div>
 
         <div class="download-actions">
@@ -505,19 +565,27 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
             Tải về cho Windows
           </a>
+          <a href="#" class="btn btn-secondary" style="background:#3DDC8422;border-color:#3DDC8455;color:#1a8041;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.69 8.32 13.38 8 12 8s-2.69.32-3.47.91L6.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85L7.4 9.48C5.18 10.67 3.62 12.83 3.5 15.5h17c-.12-2.67-1.68-4.83-3.9-6.02zM8.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+            Android APK
+          </a>
+          <a href="#" class="btn btn-secondary" style="background:#007AFF22;border-color:#007AFF55;color:#005FCC;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            iOS / TestFlight
+          </a>
           <a href="#install-guide" class="btn btn-secondary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="12" r="1.6"/><circle cx="4" cy="18" r="1.6"/></svg>
             Xem hướng dẫn cài đặt
           </a>
         </div>
 
-        <div class="download-filename">UNI.Enterprise.Managament.System<span class="hl">-Windows-0.0.0-Setup.exe</span></div>
+        <div class="download-filename">UNI.Enterprise.Managament.System<span class="hl">-Windows-0.0.0-Setup.exe</span> · Android APK · iOS IPA <span style="color:#ffffff60;font-size:11px;">— link mobile sẽ được cập nhật</span></div>
 
         <div class="download-meta">
-          <span>Windows 10/11</span>
-          <span>64-bit</span>
+          <span>Windows 10/11 · 64-bit</span>
+          <span>Android 8.0+</span>
+          <span>iOS 14.0+</span>
           <span>Cập nhật 19/06/2026</span>
-          <span>RAM tối thiểu 4GB</span>
         </div>
 
         <div class="manifest-card">
@@ -543,6 +611,61 @@
             </a>
             <span class="note">SHA · nội bộ · không cần xác minh số</span>
           </div>
+        </div>
+
+        <!-- MOBILE DOWNLOAD -->
+        <div class="mobile-download-grid reveal">
+          <!-- Android -->
+          <div class="mobile-platform-card android">
+            <span class="platform-coming-tag android-tag">Beta</span>
+            <div class="platform-badge android">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.69 8.32 13.38 8 12 8s-2.69.32-3.47.91L6.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85L7.4 9.48C5.18 10.67 3.62 12.83 3.5 15.5h17c-.12-2.67-1.68-4.83-3.9-6.02zM8.5 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+              Android
+            </div>
+            <h4>Ứng dụng Android</h4>
+            <p class="plat-desc">Cài trực tiếp từ file APK. Yêu cầu bật "Nguồn không xác định" trong cài đặt bảo mật Android trước khi cài.</p>
+            <div class="mobile-filename">uni-bom-system<span class="hl">-v2.0.0-android.apk</span></div>
+            <ul class="mobile-meta-list">
+              <li>Android 8.0 trở lên</li>
+              <li>Kiến trúc ARM64 / x86_64</li>
+              <li>Link sẽ được IT cập nhật</li>
+            </ul>
+            <a href="#" class="btn btn-android" style="width:100%;justify-content:center;font-size:14px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12-4-4m4 4 4-4M4 17v3h16v-3"/></svg>
+              Tải file APK
+            </a>
+            <div class="mobile-qr-note">Link tải sẽ được IT cập nhật sau</div>
+          </div>
+
+          <!-- iOS -->
+          <div class="mobile-platform-card ios">
+            <span class="platform-coming-tag ios-tag">Sắp ra mắt</span>
+            <div class="platform-badge ios">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              iOS
+            </div>
+            <h4>Ứng dụng iPhone / iPad</h4>
+            <p class="plat-desc">Phân phối qua TestFlight nội bộ hoặc file IPA. Yêu cầu thiết bị iOS 14.0 trở lên và tài khoản Apple được thêm vào danh sách thử nghiệm.</p>
+            <div class="mobile-filename">uni-bom-system<span class="hl">-v2.0.0-ios.ipa</span></div>
+            <ul class="mobile-meta-list">
+              <li>iOS / iPadOS 14.0 trở lên</li>
+              <li>iPhone & iPad (Universal)</li>
+              <li>Phân phối qua TestFlight</li>
+            </ul>
+            <a href="#" class="btn btn-ios" style="width:100%;justify-content:center;font-size:14px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12-4-4m4 4 4-4M4 17v3h16v-3"/></svg>
+              Tải qua TestFlight / IPA
+            </a>
+            <div class="mobile-qr-note">Link TestFlight sẽ được IT cập nhật sau</div>
+          </div>
+        </div>
+
+        <div class="download-meta" style="margin-top:22px;position:relative;z-index:1;">
+          <span style="display:flex;align-items:center;gap:7px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>
+            Mobile
+          </span>
+          <span>Cần liên hệ IT để được thêm vào danh sách thử nghiệm</span>
         </div>
       </div>
     </div>
